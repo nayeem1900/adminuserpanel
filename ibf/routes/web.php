@@ -25,23 +25,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix'=>'users'], function(){
 
     Route::get('/view', 'Backend\UserController@view')->name('users.view');
-    Route::get('/add', 'Backend\UserController@view')->name('users.add');
-    Route::post('/store', 'Backend\UserController@view')->name('users.store');
-
-    Route::get('/edit/{id}', 'Backend\UserController@view')->name('users.edit');
-    Route::post('/edit/{id}', 'Backend\UserController@view')->name('users.edit');
-    Route::post('/update/{id}', 'Backend\UserController@view')->name('users.update');
-    Route::get('/delete/{id}', 'Backend\UserController@view')->name('users.delete');
+    Route::get('/add', 'Backend\UserController@add')->name('users.add');
+    Route::post('/store', 'Backend\UserController@store')->name('users.store');
+    Route::get('/edit/{id}', 'Backend\UserController@edit')->name('users.edit');
+    Route::post('/update/{id}', 'Backend\UserController@update')->name('users.update');
+    Route::post('/delete/{id}', 'Backend\UserController@delete')->name('users.delete');
 });
 
-Route::group(['prefix'=>'sliders'], function(){
+Route::group(['prefix'=>'profiles'], function(){
 
-    Route::get('/view', 'Backend\UserController@view')->name('sliders.view');
-    Route::get('/add', 'Backend\UserController@view')->name('sliders.add');
-    Route::post('/store', 'Backend\UserController@view')->name('sliders.store');
+    Route::get('/view', 'Backend\ProfileController@view')->name('profiles.view');
+    Route::get('/add', 'Backend\ProfileController@sedit')->name('profiles.edit');
+    Route::post('/store', 'Backend\ProfileController@update')->name('profiles.update');
 
-    Route::get('/edit/{id}', 'Backend\UserController@view')->name('sliders.edit');
-    Route::post('/edit/{id}', 'Backend\UserController@view')->name('sliders.edit');
-    Route::post('/update/{id}', 'Backend\UserController@view')->name('sliders.update');
-    Route::get('/delete/{id}', 'Backend\UserController@view')->name('sliders.delete');
+
 });

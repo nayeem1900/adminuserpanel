@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('backene/admin_panel/plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('backend/admin_panel/plugins/summernote/summernote-bs4.css')}}">
+    <script src="{{asset('backend/admin_panel/plugins/jquery/jquery.min.js')}}"></script>
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -120,6 +121,11 @@
 
     <!-- Content Wrapper. Contains page content -->
    @yield('content')
+
+
+
+
+
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <strong>Copyright &copy; IBF </strong>
@@ -138,7 +144,10 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{asset('backend/admin_panel/plugins/jquery/jquery.min.js')}}"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('public/backend/admin_panel/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -147,6 +156,13 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('backend/admin_panel/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+<!-- DataTables -->
+<script src="{{asset('backend/admin_panel/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('backend/admin_panel/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('backend/admin_panel/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('backend/admin_panel/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+
 <!-- ChartJS -->
 <script src="{{asset('backend/admin_panel/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
@@ -171,5 +187,30 @@
 <script src="{{asset('backend/admin_panel/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('backend/admin_panel/dist/js/demo.js')}}"></script>
+
+<!-- jquery-validation -->
+<script src="{{asset('backend/admin_panel/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+<script src="{{asset('backend/admin_panel/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+
+
+
 </body>
 </html>
