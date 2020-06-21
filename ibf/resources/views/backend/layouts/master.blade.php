@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('backene/admin_panel/plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('backend/admin_panel/plugins/summernote/summernote-bs4.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="{{asset('backend/admin_panel/plugins/jquery/jquery.min.js')}}"></script>
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -66,23 +67,21 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
 
-                    <span class="">  {{ Auth::user()->name }}</span>
+                    <span>{{Auth::user()->name}}</span>
                 </a>
+
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-
-
 
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                         document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer">
+                        Logout
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-
 
                 </div>
             </li>
@@ -105,10 +104,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{asset('backend/admin_panel/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                  <img src="{{(!empty(Auth::user()->image))?url('upload/user_images/'.Auth::user()->image):url('upload/no_img.png')}}" style="width:150px;height:160px;border:1px solid#000;">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                  <a href="#" class="d-block">{{Auth::user()->name}}</a>
                 </div>
             </div>
 
@@ -122,11 +121,37 @@
     <!-- Content Wrapper. Contains page content -->
    @yield('content')
 
+{{--
+@if(session()->has('success'))
+    <script type="text/javascript">
+
+$(function(){
+
+    $.notify("{{session()->get('success')}}",{globalPosition:'top right', className:'success'});
+});
+
+    </script>
+    @endif
 
 
 
 
-    <!-- /.content-wrapper -->
+    @if(session()->has('error'))
+        <script type="text/javascript">
+
+            $(function(){
+
+                $.notify("{{session()->get('error')}}",{globalPosition:'top right', className:'error'});
+            });
+
+        </script>
+@endif
+--}}
+
+
+
+
+<!-- /.content-wrapper -->
     <footer class="main-footer">
         <strong>Copyright &copy; IBF </strong>
         All rights reserved.
@@ -146,8 +171,8 @@
 <!-- jQuery -->
 
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('public/backend/admin_panel/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -210,7 +235,25 @@
     });
 </script>
 
+{{--imageshow scrypt--}}
 
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#image').change(function(e){
+var reader=new FileReader();
+reader.onload=function (e) {
+
+    $('#showImage').attr('src',e.target.result);
+}
+reader.readAsDataURL(e.target.files['0']);
+    
+});
+
+    });
+
+
+</script>
 
 </body>
 </html>

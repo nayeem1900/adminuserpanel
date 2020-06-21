@@ -2,6 +2,7 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+        @if(Auth::user()->usertype=='Admin')
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
@@ -23,6 +24,7 @@
 
             </ul>
         </li>
+        @endif
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
@@ -37,6 +39,12 @@
                     <a href="{{route('profiles.view')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Your Profile</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('profiles.password.view')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Change Your password</p>
                     </a>
                 </li>
 

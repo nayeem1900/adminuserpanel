@@ -35,8 +35,10 @@ Route::group(['prefix'=>'users'], function(){
 Route::group(['prefix'=>'profiles'], function(){
 
     Route::get('/view', 'Backend\ProfileController@view')->name('profiles.view');
-    Route::get('/add', 'Backend\ProfileController@sedit')->name('profiles.edit');
+    Route::get('/edit', 'Backend\ProfileController@edit')->name('profiles.edit');
     Route::post('/store', 'Backend\ProfileController@update')->name('profiles.update');
+    Route::get('/password/view', 'Backend\ProfileController@passwordView')->name('profiles.password.view');
+    Route::post('/password/update', 'Backend\ProfileController@passwordUpdate')->name('profiles.password.update');
 
 
 });
