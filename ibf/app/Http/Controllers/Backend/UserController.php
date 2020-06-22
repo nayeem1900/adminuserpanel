@@ -77,8 +77,8 @@ $user=User::find($id);
             //if it is parent Brand delete sub Brand
 
 
-            if (File::exists('images/brands' .$user->image)){
-                File::delete('images/brands' .$user->image);
+            if (File::exists('upload/users' .$user->image)){
+                File::delete('upload/users' .$user->image);
             }
 
             $user->delete();

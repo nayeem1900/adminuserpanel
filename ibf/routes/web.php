@@ -42,3 +42,24 @@ Route::group(['prefix'=>'profiles'], function(){
 
 
 });
+
+
+Route::group(['prefix'=>'logos'], function(){
+
+    Route::get('/view', 'Backend\LogoController@view')->name('logos.view');
+    Route::get('/add', 'Backend\LogoController@add')->name('logos.add');
+    Route::post('/store', 'Backend\LogoController@store')->name('logos.store');
+    Route::get('/edit/{id}', 'Backend\LogoController@edit')->name('logos.edit');
+    Route::post('/update/{id}', 'Backend\LogoController@update')->name('logos.update');
+    Route::post('/delete/{id}', 'Backend\LogoController@delete')->name('logos.delete');
+});
+
+Route::group(['prefix'=>'sliders'], function(){
+
+    Route::get('/view', 'Backend\SliderController@view')->name('sliders.view');
+    Route::get('/add', 'Backend\SliderController@add')->name('sliders.add');
+    Route::post('/store', 'Backend\SliderController@store')->name('sliders.store');
+    Route::get('/edit/{id}', 'Backend\SliderController@edit')->name('sliders.edit');
+    Route::post('/update/{id}', 'Backend\SliderController@update')->name('sliders.update');
+    Route::post('/delete/{id}', 'Backend\SliderController@delete')->name('sliders.delete');
+});
