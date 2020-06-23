@@ -33,7 +33,7 @@
 
     <div class="col-sm-4">
 
-        <img src="{{asset('website/images/'.'aboutus.png')}}">
+        <img src="">
 
 
     </div>

@@ -10,7 +10,7 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">About US</a>
+                    <a class="nav-link" href="{{route('website.aboutus')}}">About US</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -18,7 +18,7 @@
                         Admission
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="">Admission info</a>
+                        <a class="dropdown-item" href="{{route('website.addmission-info')}}">Admission info</a>
                         <a class="dropdown-item" href="">Admission Form</a>
 
                     </div>
@@ -49,19 +49,19 @@
                         Notice
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="">Notice</a>
+                        <a class="dropdown-item" href="{{route('website.notice')}}">Notice</a>
                         <a class="dropdown-item" href="">Download</a>
 
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Photo Gallery</a>
+                    <a class="nav-link" href="{{route('website.gallery')}}">Photo Gallery</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Carrer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Contact</a>
+                    <a class="nav-link" href="{{route('website.contact')}}">Contact</a>
                 </li>
 
             </ul>

@@ -15,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Website\PageController@index')->name('index');
 
+
+Route::group(['prefix'=>'website'], function(){
+
+
+    Route::get('pages.admission-info', 'Website\PageController@admissioninfo')->name('website.addmission-info');
+    Route::get('pages.aboutus', 'Website\PageController@aboutus')->name('website.aboutus');
+    Route::get('pages.comon', 'Website\PageController@messageprincipal')->name('website.comon');
+    Route::get('pages.gallery', 'Website\PageController@gallery')->name('website.gallery');
+    Route::get('pages.contact', 'Website\PageController@contact')->name('website.contact');
+    Route::get('pages.notice', 'Website\PageController@notice')->name('website.notice');
+
+
+});
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -22,7 +39,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::group(['prefix'=>'users'], function(){
+
+
+
+Route::group(['prefix'=>'users','middleware' => 'auth'], function(){
 
     Route::get('/view', 'Backend\UserController@view')->name('users.view');
     Route::get('/add', 'Backend\UserController@add')->name('users.add');
@@ -32,7 +52,7 @@ Route::group(['prefix'=>'users'], function(){
     Route::post('/delete/{id}', 'Backend\UserController@delete')->name('users.delete');
 });
 
-Route::group(['prefix'=>'profiles'], function(){
+Route::group(['prefix'=>'profiles','middleware' => 'auth'], function(){
 
     Route::get('/view', 'Backend\ProfileController@view')->name('profiles.view');
     Route::get('/edit', 'Backend\ProfileController@edit')->name('profiles.edit');
@@ -44,7 +64,7 @@ Route::group(['prefix'=>'profiles'], function(){
 });
 
 
-Route::group(['prefix'=>'logos'], function(){
+Route::group(['prefix'=>'logos','middleware' => 'auth'], function(){
 
     Route::get('/view', 'Backend\LogoController@view')->name('logos.view');
     Route::get('/add', 'Backend\LogoController@add')->name('logos.add');
@@ -54,7 +74,17 @@ Route::group(['prefix'=>'logos'], function(){
     Route::post('/delete/{id}', 'Backend\LogoController@delete')->name('logos.delete');
 });
 
-Route::group(['prefix'=>'sliders'], function(){
+Route::group(['prefix'=>'gallerys','middleware' => 'auth'], function(){
+
+    Route::get('/view', 'Backend\GalleryController@view')->name('gallerys.view');
+    Route::get('/add', 'Backend\GalleryController@add')->name('gallerys.add');
+    Route::post('/store', 'Backend\GalleryController@store')->name('gallerys.store');
+    Route::get('/edit/{id}', 'Backend\GalleryController@edit')->name('gallerys.edit');
+    Route::post('/update/{id}', 'Backend\GalleryController@update')->name('gallerys.update');
+    Route::post('/delete/{id}', 'Backend\GalleryController@delete')->name('gallerys.delete');
+});
+
+Route::group(['prefix'=>'sliders','middleware' => 'auth'], function(){
 
     Route::get('/view', 'Backend\SliderController@view')->name('sliders.view');
     Route::get('/add', 'Backend\SliderController@add')->name('sliders.add');
@@ -62,4 +92,14 @@ Route::group(['prefix'=>'sliders'], function(){
     Route::get('/edit/{id}', 'Backend\SliderController@edit')->name('sliders.edit');
     Route::post('/update/{id}', 'Backend\SliderController@update')->name('sliders.update');
     Route::post('/delete/{id}', 'Backend\SliderController@delete')->name('sliders.delete');
+});
+
+Route::group(['prefix'=>'notices','middleware' => 'auth'], function(){
+
+    Route::get('/view', 'Backend\NoticeController@view')->name('notices.view');
+    Route::get('/add', 'Backend\NoticeController@add')->name('notices.add');
+    Route::post('/store', 'Backend\NoticeController@store')->name('notices.store');
+    Route::get('/edit/{id}', 'Backend\NoticeController@edit')->name('notices.edit');
+    Route::post('/update/{id}', 'Backend\NoticeController@update')->name('notices.update');
+    Route::post('/delete/{id}', 'Backend\NoticeController@delete')->name('notices.delete');
 });

@@ -12,12 +12,47 @@ class PageController extends Controller
     public function index()
     {
 
-
         return view('index');
 
     }
 
 
+    public function gallery(){
+
+        return view('website.pages.gallery');
+
+    }
+
+
+    public function admissioninfo()
+    {
+
+        return view('website.pages.admission-info');
+
+    }
+
+    public function notice()
+    {
+
+        return view('website.pages.notice');
+
+    }
+
+    public function contact(){
+
+
+        return view('website.pages.contact');
+
+
+    }
+
+
+    public function aboutus()
+    {
+
+        return view('website.pages.aboutus');
+
+    }
 
 
 }
