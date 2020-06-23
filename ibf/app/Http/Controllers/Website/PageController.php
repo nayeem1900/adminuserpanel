@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\Logo;
 
 class PageController extends Controller
 {
@@ -11,8 +12,9 @@ class PageController extends Controller
 
     public function index()
     {
+        $data['logo']=Logo::first();
 
-        return view('index');
+        return view('index',$data);
 
     }
 

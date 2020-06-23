@@ -31,7 +31,6 @@ Route::group(['prefix'=>'website'], function(){
 
 
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

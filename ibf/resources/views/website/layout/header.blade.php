@@ -4,7 +4,7 @@
         <div class="col-md-8">
             <div class="thumbnail">
 
-                <img src="{{asset('website/images/banner.png')}}"  style="width:80%">
+                <img src="{{asset('upload/logo_images/'.$logo->image)}}"  style="width:80%">
             </div>
         </div>
 
