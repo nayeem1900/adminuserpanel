@@ -1,17 +1,23 @@
+@php
+$count=0;
+
+@endphp
 <div class="slider">
 
     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="1000">
-                <img src="{{asset('website/images/'. 'slider1.png')}}" class="d-block w-100" alt="...">
+            @foreach($sliders as $slider)
+            <div class="carousel-item @if($count==0){ active }@endif" data-interval="1000">
+                <img src="{{asset('upload/slider_images/'.$slider->image)}}" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item" data-interval="1000">
-                <img src="{{asset('website/images/'.'slider2.jpg')}}" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="1000">
-                <img src="{{asset('website/images/'. 'slider3.jpg')}}" class="d-block w-100" alt="...">
-            </div>
+                @php
+                $count++
+
+                @endphp
+
+            @endforeach
         </div>
+
         <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
